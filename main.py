@@ -24,17 +24,7 @@ def checkCap():
         screenshot = wincap.get_screenshot()
         best_match = vision_cap.find_best_match(screenshot,0.8)
         if best_match is not None:
-            pg.press('space')
-            time.sleep(0.5)
-            pg.press('del')
-            time.sleep(1)
-            pg.press('enter')
-            time.sleep(3)
-            pg.press('esc')
-            time.sleep(0.5)
-            break
-        else:
-            break
+            time.sleep(50)
             
 def focus_window():
     vision_window = Vision('icon.png', cv.TM_CCOEFF_NORMED)
@@ -136,7 +126,7 @@ def harvestSeedAndCrops(seedPath,cropPath):
     vision_buttonHarvest = Vision('dataset/buttons/getCrops.png', cv.TM_CCOEFF_NORMED)
     vision_crops = Vision(cropPath, cv.TM_SQDIFF_NORMED)  # conferma metodo
     while True:
-        checkCap()
+        #checkCap()
         screenshot = wincap.get_screenshot()
         best_match = vision_seed.find_best_match(screenshot, threshold=0.21)
 
@@ -166,7 +156,7 @@ def harvestSeedAndCrops(seedPath,cropPath):
                 time.sleep(1)
             
             ###harvest 
-            checkCap()
+            #checkCap()
             screenshot = wincap.get_screenshot()
             best_match = vision_crops.find_best_match(screenshot, threshold=0.22)
             if best_match is not None:
